@@ -1,0 +1,44 @@
+a) What is a Breakpoint and How to Apply it to Debug a Program
+Breakpoint: A breakpoint is a debugging tool used to pause the execution of a program at a specific line of code. This allows developers to inspect the current state of the application, including variables, the flow of control, and other runtime data, to identify and resolve issues. Breakpoints help in understanding the behavior of the code and isolating bugs by stopping execution right before the suspected issue occurs.
+
+How to Apply a Breakpoint:
+
+In Android Studio or IntelliJ IDEA:
+Open the file in the editor where you want to set a breakpoint.
+Click in the left margin next to the line number where you want to pause the execution. A red dot (breakpoint) will appear.
+Alternatively, you can place the cursor on the desired line and press Ctrl + F8 (Windows/Linux) or Cmd + F8 (Mac) to toggle a breakpoint.
+Run the Program in Debug Mode:
+Click the Debug icon (usually a bug icon) or use the shortcut Shift + F9 to run the program in debug mode.
+The program will start executing and pause when it hits the breakpoint, allowing you to inspect the variables and the current state.
+Inspect and Control Execution:
+Use the Debug tool window to inspect variables, step over lines of code, step into functions, or resume execution.
+You can step over (F8), step into (F7), or continue (F9) to the next breakpoint.
+b) What is a Stack Trace and How to Apply it in Debugging
+Stack Trace: A stack trace is a report that provides the sequence of method calls leading up to the point where an exception or error occurred in a program. It shows the path the execution took, listing the method calls in reverse order—from the most recent call at the top to the initial call at the bottom. The stack trace includes the file names and line numbers where the exceptions were thrown, which is crucial for debugging.
+How to Use a Stack Trace in Debugging:
+
+Identify the Error:
+When an exception occurs, the stack trace is printed in the console or logcat (for Android).
+The stack trace typically starts with the type of exception (e.g., NullPointerException, IndexOutOfBoundsException) followed by the message and the call stack.
+Read the Stack Trace:
+Start from the top of the stack trace to see the immediate cause of the exception.
+Trace back through the list to understand the sequence of method calls that led to the error.
+Focus on your code lines first (often skipping standard library or framework calls unless they relate directly to the error).
+Navigate to the Source Code:
+Click on the file and line number links in the stack trace if your IDE supports it, or manually navigate to the specific lines mentioned in the trace.
+Investigate the line of code to understand why the error occurred. For example, if a NullPointerException was thrown, check for null references at that line.
+Debug with Breakpoints:
+Use the stack trace to set breakpoints at key points in the code path that led to the error.
+Re-run the program in debug mode and step through the execution to see where things start to go wrong.
+Example of Using a Stack Trace:
+Suppose you see a stack trace like this in your logs:java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference
+    at com.example.myapp.MainActivity.onCreate(MainActivity.java:25)
+    at android.app.Activity.performCreate(Activity.java:8000)
+    at android.app.ActivityThread.handleCreateService(ActivityThread.java:3000)Steps to Debug:
+
+Look at the first line that involves your code: MainActivity.java:25.
+Go to line 25 in MainActivity.java.
+Inspect the code for null objects. In this case, ensure the String object being called with .length() is not null.
+Use breakpoints before this line to inspect the state and why the object might be null.
+Conclusion:
+Breakpoints and stack traces are powerful tools in debugging. Breakpoints allow for interactive exploration of the program state, while stack traces provide a snapshot of the call history leading up to an error. Together, they help diagnose and fix bugs efficiently in any codebase.
